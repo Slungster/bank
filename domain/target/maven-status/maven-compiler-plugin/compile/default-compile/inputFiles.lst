@@ -1,4 +1,8 @@
 C:\Users\Slungster\DEV\workspace\bank\domain\src\main\java\org\example\ports\spi\ClientPersistencePort.java
+C:\Users\Slungster\DEV\workspace\bank\domain\src\main\java\org\example\service\AccountServiceImpl.java
 C:\Users\Slungster\DEV\workspace\bank\domain\src\main\java\org\example\ports\api\ClientServicePort.java
+C:\Users\Slungster\DEV\workspace\bank\domain\src\main\java\org\example\data\AccountDto.java
+C:\Users\Slungster\DEV\workspace\bank\domain\src\main\java\org\example\ports\api\AccountServicePort.java
 C:\Users\Slungster\DEV\workspace\bank\domain\src\main\java\org\example\data\ClientDto.java
+C:\Users\Slungster\DEV\workspace\bank\domain\src\main\java\org\example\ports\spi\AccountPersistencePort.java
 C:\Users\Slungster\DEV\workspace\bank\domain\src\main\java\org\example\service\ClientServiceImpl.java

@@ -1,4 +1,8 @@
+C:\Users\Slungster\DEV\workspace\bank\infrastructure\src\main\java\org\example\entities\Account.java
 C:\Users\Slungster\DEV\workspace\bank\infrastructure\src\main\java\org\example\mappers\ClientMapper.java
 C:\Users\Slungster\DEV\workspace\bank\infrastructure\src\main\java\org\example\adapters\ClientJpaAdapter.java
+C:\Users\Slungster\DEV\workspace\bank\infrastructure\src\main\java\org\example\mappers\AccountMapper.java
+C:\Users\Slungster\DEV\workspace\bank\infrastructure\src\main\java\org\example\repositories\AccountRepository.java
 C:\Users\Slungster\DEV\workspace\bank\infrastructure\src\main\java\org\example\entities\Client.java
 C:\Users\Slungster\DEV\workspace\bank\infrastructure\src\main\java\org\example\repositories\ClientRepository.java
+C:\Users\Slungster\DEV\workspace\bank\infrastructure\src\main\java\org\example\adapters\AccountJpaAdapter.java

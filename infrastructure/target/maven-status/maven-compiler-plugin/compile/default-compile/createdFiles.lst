@@ -1,5 +1,10 @@
-org\example\mappers\ClientMapper.class
-org\example\entities\Client.class
+org\example\repositories\AccountRepository.class
+org\example\entities\Account.class
 org\example\repositories\ClientRepository.class
 org\example\adapters\ClientJpaAdapter.class
+org\example\entities\Account$AccountBuilder.class
+org\example\mappers\ClientMapper.class
+org\example\mappers\AccountMapper.class
+org\example\entities\Client.class
+org\example\adapters\AccountJpaAdapter.class
 org\example\entities\Client$ClientBuilder.class

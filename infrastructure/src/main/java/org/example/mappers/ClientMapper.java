@@ -2,7 +2,6 @@ package org.example.mappers;
 
 import org.example.data.ClientDto;
 import org.example.entities.Client;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;

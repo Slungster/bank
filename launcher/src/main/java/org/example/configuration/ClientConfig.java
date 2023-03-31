@@ -1,4 +1,4 @@
-package org.example.configuration;
+/*package org.example.configuration;
 
 import org.example.adapters.ClientJpaAdapter;
 import org.example.ports.api.ClientServicePort;
@@ -19,4 +19,4 @@ public class ClientConfig {
     public ClientServicePort clientService(){
         return new ClientServiceImpl(clientPersistence());
     }
-}
+}*/
