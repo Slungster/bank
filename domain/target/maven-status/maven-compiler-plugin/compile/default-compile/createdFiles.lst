@@ -1,0 +1,4 @@
+org\example\ports\api\ClientServicePort.class
+org\example\ports\spi\ClientPersistencePort.class
+org\example\service\ClientServiceImpl.class
+org\example\data\ClientDto.class
