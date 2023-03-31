@@ -7,8 +7,12 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
 public class ClientMapper {
+
+    public static final ClientMapper INSTANCE = new ClientMapper();
+
+    public ClientMapper() {
+    }
 
     public Client dtoToEntity (ClientDto clientDto) {
         if (clientDto != null) {

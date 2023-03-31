@@ -18,22 +18,18 @@ public class ClientJpaAdapter implements ClientPersistencePort {
     @Autowired
     private ClientRepository clientRepository;
 
-    @Autowired
-    private ClientMapper clientMapper;
-
-
     @Override
     public ClientDto createClient(ClientDto clientDto) {
-        Client client = clientMapper.dtoToEntity(clientDto);
+        Client client = ClientMapper.INSTANCE.dtoToEntity(clientDto);
         Client createdClient = clientRepository.save(client);
-        return clientMapper.entityToDto(createdClient);
+        return ClientMapper.INSTANCE.entityToDto(createdClient);
     }
 
     @Override
     public ClientDto updateClient(ClientDto clientDto) {
-        Client client = clientMapper.dtoToEntity(clientDto);
+        Client client = ClientMapper.INSTANCE.dtoToEntity(clientDto);
         Client updatedClient = clientRepository.save(client);
-        return clientMapper.entityToDto(updatedClient);
+        return ClientMapper.INSTANCE.entityToDto(updatedClient);
     }
 
     @Override
@@ -46,7 +42,7 @@ public class ClientJpaAdapter implements ClientPersistencePort {
     public ClientDto getClientById(Long id) {
         Optional<Client> clientEntity = clientRepository.findById(id);
         if(clientEntity.isPresent()) {
-            return clientMapper.entityToDto(clientEntity.get());
+            return ClientMapper.INSTANCE.entityToDto(clientEntity.get());
         }
         return null;
     }
@@ -55,7 +51,7 @@ public class ClientJpaAdapter implements ClientPersistencePort {
     public List<ClientDto> getClients() {
         List<Client> clients = clientRepository.findAll();
         if (clients != null) {
-            return clientMapper.listEntitiesToListDtos(clients);
+            return ClientMapper.INSTANCE.listEntitiesToListDtos(clients);
         }
         return new ArrayList<>();
     }
