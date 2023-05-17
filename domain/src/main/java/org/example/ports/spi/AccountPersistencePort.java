@@ -8,10 +8,6 @@ public interface AccountPersistencePort {
 
     AccountDto updateAccount(AccountDto accountDto);
 
-    AccountDto creditAccount(Long accountId, double amount);
-
-    AccountDto debitAccount(Long accountId, double amount);
-
     AccountDto getAccountById (Long accountId);
 
     double getAccountBalance(Long accountId);

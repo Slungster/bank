@@ -5,6 +5,7 @@ import org.example.entities.Client;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ClientMapper {
 
@@ -44,9 +45,7 @@ public class ClientMapper {
         List<ClientDto> listDtos = new ArrayList<>();
 
         if (listClients != null) {
-            for (Client cl : listClients) {
-                listDtos.add(entityToDto(cl));
-            }
+            listDtos = listClients.stream().map(c -> entityToDto(c)).collect(Collectors.toList());
         }
 
         return listDtos;

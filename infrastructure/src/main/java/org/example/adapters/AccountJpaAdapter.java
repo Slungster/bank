@@ -4,7 +4,6 @@ import org.example.data.AccountDto;
 import org.example.entities.Account;
 import org.example.entities.Client;
 import org.example.mappers.AccountMapper;
-import org.example.mappers.ClientMapper;
 import org.example.ports.spi.AccountPersistencePort;
 import org.example.repositories.AccountRepository;
 import org.example.repositories.ClientRepository;
@@ -21,7 +20,6 @@ public class AccountJpaAdapter implements AccountPersistencePort {
 
     @Autowired
     private ClientRepository clientRepository;
-
 
     @Override
     public AccountDto createAccount(AccountDto accountDto) {
@@ -42,16 +40,6 @@ public class AccountJpaAdapter implements AccountPersistencePort {
     }
 
     @Override
-    public AccountDto creditAccount(Long accountId, double amount) {
-        return null;
-    }
-
-    @Override
-    public AccountDto debitAccount(Long accountId, double amount) {
-        return null;
-    }
-
-    @Override
     public AccountDto getAccountById(Long accountId) {
         Optional<Account> accountEntity = accountRepository.findById(accountId);
         if(accountEntity.isPresent()) {
@@ -67,6 +55,7 @@ public class AccountJpaAdapter implements AccountPersistencePort {
 
     @Override
     public void deleteAccount(Long accountId) {
+        accountRepository.deleteById(accountId);
 
     }
 }

@@ -2,9 +2,13 @@ package org.example.service;
 
 import org.example.data.AccountDto;
 import org.example.data.ClientDto;
+import org.example.data.MovementDto;
+import org.example.data.MovementStatusEnum;
+import org.example.data.MovementTypeEnum;
 import org.example.ports.api.AccountServicePort;
 import org.example.ports.spi.AccountPersistencePort;
 import org.example.ports.spi.ClientPersistencePort;
+import org.example.ports.spi.MovementPersistencePort;
 
 import java.util.NoSuchElementException;
 
@@ -12,10 +16,12 @@ public class AccountServiceImpl implements AccountServicePort {
 
     private AccountPersistencePort accountPersistencePort;
     private ClientPersistencePort clientPersistencePort;
+    private MovementPersistencePort movementPersistencePort;
 
-    public AccountServiceImpl(AccountPersistencePort accountPersistencePort, ClientPersistencePort clientPersistencePort) {
+    public AccountServiceImpl(AccountPersistencePort accountPersistencePort, ClientPersistencePort clientPersistencePort, MovementPersistencePort movementPersistencePort) {
         this.accountPersistencePort = accountPersistencePort;
         this.clientPersistencePort = clientPersistencePort;
+        this.movementPersistencePort = movementPersistencePort;
     }
 
     @Override
@@ -36,7 +42,18 @@ public class AccountServiceImpl implements AccountServicePort {
         if (account == null) {
             throw new NoSuchElementException("Le compte avec l'id " + accountId + " n'existe pas");
         }
+        MovementDto movement = new MovementDto();
+        movement.setAccountId(account.getId());
+        movement.setClientId(account.getIdClient());
+        movement.setOldBalance(account.getBalance());
+        movement.setMovementType(MovementTypeEnum.CREDIT);
+        movement.setMovementAmount(amount);
+        movement.setMovementStatus(MovementStatusEnum.SUCCESS);
         account.creditBalance(amount);
+        movement.setNewBalance(account.getBalance());
+
+        movementPersistencePort.createMovement(movement);
+
         return updateAccount(account);
     }
 
@@ -47,10 +64,30 @@ public class AccountServiceImpl implements AccountServicePort {
             throw new NoSuchElementException("Le compte avec l'id " + accountId + " n'existe pas");
         }
         if (account.hasSufficientBalance(amount)) {
+            MovementDto movement = new MovementDto();
+            movement.setAccountId(account.getId());
+            movement.setClientId(account.getIdClient());
+            movement.setOldBalance(account.getBalance());
+            movement.setMovementType(MovementTypeEnum.DEBIT);
+            movement.setMovementAmount(amount);
+            movement.setMovementStatus(MovementStatusEnum.SUCCESS);
             account.debitBalance(amount);
+            movement.setNewBalance(account.getBalance());
+
+            movementPersistencePort.createMovement(movement);
             return updateAccount(account);
         }
         else {
+            MovementDto movement = new MovementDto();
+            movement.setAccountId(account.getId());
+            movement.setClientId(account.getIdClient());
+            movement.setOldBalance(account.getBalance());
+            movement.setMovementType(MovementTypeEnum.DEBIT);
+            movement.setMovementAmount(amount);
+            movement.setMovementStatus(MovementStatusEnum.FAILURE);
+            movement.setNewBalance(account.getBalance());
+            
+            movementPersistencePort.createMovement(movement);
             throw new IllegalArgumentException("Solde insuffisant pour le compte avec l'id " + accountId);
         }
     }
