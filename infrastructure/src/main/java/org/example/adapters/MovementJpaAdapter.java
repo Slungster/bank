@@ -31,7 +31,7 @@ public class MovementJpaAdapter implements MovementPersistencePort {
     }
 
     @Override
-    public List<MovementDto> getMovementByAccountId(Long accountId) {
+    public List<MovementDto> getMovementsByAccountId(Long accountId) {
         List<Movement> movements = movementRepository.findAllByAccountId(accountId);
         return MovementMapper.INSTANCE.listEntitiesToListDtos(movements);
     }

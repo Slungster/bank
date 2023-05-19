@@ -41,11 +41,25 @@ public class AccountMapperTest {
     }
 
     @Test
+    public void should_transform_null_dto_to_null_entity () {
+        Account account = AccountMapper.INSTANCE.dtoToEntity(null);
+        Assertions.assertThat(account).isNull();
+
+    }
+
+    @Test
     public void should_transform_entity_to_dto () {
         AccountDto accountDto = AccountMapper.INSTANCE.entityToDto(accountTwo);
         Assertions.assertThat(accountDto.getId()).isEqualTo(accountTwo.getId());
         Assertions.assertThat(accountDto.getIdClient()).isEqualTo(accountTwo.getClient().getId());
         Assertions.assertThat(accountDto.getBalance()).isEqualTo(accountTwo.getBalance());
+    }
+
+    @Test
+    public void should_transform_null_entity_to_null_dto () {
+        AccountDto accountDto = AccountMapper.INSTANCE.entityToDto(null);
+        Assertions.assertThat(accountDto).isNull();
+
     }
 
 }

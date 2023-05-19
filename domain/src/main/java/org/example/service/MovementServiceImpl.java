@@ -37,7 +37,7 @@ public class MovementServiceImpl implements MovementServicePort {
             throw new NoSuchElementException("Le compte avec l'id " + accountId + " n'existe pas");
         }
 
-        return movementPersistencePort.getMovementByAccountId(accountId);
+        return movementPersistencePort.getMovementsByAccountId(accountId);
     }
 
     public void validateMovementToCreate (MovementDto movementDto) {

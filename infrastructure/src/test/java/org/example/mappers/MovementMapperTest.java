@@ -74,6 +74,13 @@ public class MovementMapperTest {
     }
 
     @Test
+    public void should_transform_null_dto_to_null_entity () {
+        Movement movement = MovementMapper.INSTANCE.dtoToEntity(null);
+        Assertions.assertThat(movement).isNull();
+
+    }
+
+    @Test
     public void should_transform_entity_to_dto () {
         MovementDto movementDto = MovementMapper.INSTANCE.entityToDto(movementTwo);
         Assertions.assertThat(movementDto.getId()).isEqualTo(movementTwo.getId());
@@ -82,6 +89,13 @@ public class MovementMapperTest {
         Assertions.assertThat(movementDto.getMovementAmount()).isEqualTo(movementTwo.getMovementAmount());
         Assertions.assertThat(movementDto.getMovementStatus()).isEqualTo(movementTwo.getMovementStatus());
         Assertions.assertThat(movementDto.getNewBalance()).isEqualTo(movementTwo.getNewBalance());
+
+    }
+
+    @Test
+    public void should_transform_null_entity_to_null_dto () {
+        MovementDto movementDto = MovementMapper.INSTANCE.entityToDto(null);
+        Assertions.assertThat(movementDto).isNull();
 
     }
 

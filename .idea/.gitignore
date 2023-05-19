@@ -3,7 +3,10 @@
 /workspace.xml
 
 # Maven
-target/
+domain/target/
+infrastructure/target/
+application/target/
+launcher/target/
 
 # Intellij
 .idea/

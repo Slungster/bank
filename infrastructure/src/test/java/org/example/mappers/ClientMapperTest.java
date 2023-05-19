@@ -39,12 +39,24 @@ public class ClientMapperTest {
     }
 
     @Test
+    public void should_transform_null_dto_to_null_entity () {
+        Client client = ClientMapper.INSTANCE.dtoToEntity(null);
+        Assertions.assertThat(client).isNull();
+    }
+
+    @Test
     public void should_transform_entity_to_dto () {
         ClientDto clientDto = ClientMapper.INSTANCE.entityToDto(clientTwo);
         Assertions.assertThat(clientDto.getId()).isEqualTo(clientTwo.getId());
         Assertions.assertThat(clientDto.getFirstname()).isEqualTo(clientTwo.getFirstname());
         Assertions.assertThat(clientDto.getLastname()).isEqualTo(clientTwo.getLastname());
         Assertions.assertThat(clientDto.getZipcode()).isEqualTo(clientTwo.getZipcode());
+    }
+
+    @Test
+    public void should_transform_null_entity_to_null_dto () {
+        ClientDto clientDto = ClientMapper.INSTANCE.entityToDto(null);
+        Assertions.assertThat(clientDto).isNull();
     }
 
     @Test
