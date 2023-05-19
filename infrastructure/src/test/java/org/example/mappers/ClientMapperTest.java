@@ -51,5 +51,11 @@ public class ClientMapperTest {
     public void should_transform_listEntities_to_listDtos () {
         List<ClientDto> clientDtoList = ClientMapper.INSTANCE.listEntitiesToListDtos(clientList);
         Assertions.assertThat(clientDtoList).hasSize(2);
+        Assertions.assertThat(
+                clientDtoList.stream().filter(c -> c.getId().equals(25L)).findFirst().get().getZipcode())
+                .isEqualTo("75002");
+        Assertions.assertThat(
+                clientDtoList.stream().filter(c -> c.getLastname().equals("Elizabeth")).findFirst().get().getId())
+                .isEqualTo(38L);
     }
 }
