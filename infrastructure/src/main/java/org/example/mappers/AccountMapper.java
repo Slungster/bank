@@ -25,7 +25,9 @@ public class AccountMapper {
             AccountDto accountDto = new AccountDto();
             accountDto.setId(account.getId());
             accountDto.setBalance(account.getBalance());
-            accountDto.setIdClient(account.getClient().getId());
+            if (account.getClient() != null) {
+                accountDto.setIdClient(account.getClient().getId());
+            }
             return accountDto;
         }
         return null;

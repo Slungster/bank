@@ -1,8 +1,0 @@
-org\example\ports\api\ClientServicePort.class
-org\example\ports\spi\ClientPersistencePort.class
-org\example\ports\api\AccountServicePort.class
-org\example\data\AccountDto.class
-org\example\data\ClientDto.class
-org\example\service\AccountServiceImpl.class
-org\example\ports\spi\AccountPersistencePort.class
-org\example\service\ClientServiceImpl.class

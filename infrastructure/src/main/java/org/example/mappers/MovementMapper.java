@@ -32,8 +32,12 @@ public class MovementMapper {
         if (movement != null) {
             MovementDto movementDto = new MovementDto();
             movementDto.setId(movement.getId());
-            movementDto.setAccountId(movement.getAccount().getId());
-            movementDto.setClientId(movement.getAccount().getClient().getId());
+            if (movement.getAccount() != null) {
+                movementDto.setAccountId(movement.getAccount().getId());
+                if (movement.getAccount().getClient() != null) {
+                    movementDto.setClientId(movement.getAccount().getClient().getId());
+                }
+            }
             movementDto.setOldBalance(movement.getOldBalance());
             movementDto.setMovementType(movement.getMovementType());
             movementDto.setMovementAmount(movement.getMovementAmount());
